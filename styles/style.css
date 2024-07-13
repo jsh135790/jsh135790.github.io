@@ -1,7 +1,15 @@
 html{
     font-size: 20px;
     font-family: "Open Sans";
-    background-color: #00539f;
+    background-image: url('https://img.picui.cn/free/2024/07/13/669232d1273bb.png');
+    background-size: cover;
+}
+html::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
 }
 p, li{
     font-size: 16px;
@@ -18,11 +26,20 @@ h1{
     text-align: center;
 }
 body{
-    width: 600px;
-    margin: 0 auto;
-    background-color: coral;
+    width: 60%;
+    margin: 20px auto;
     padding: 0 20px 20px 20px;
-    border: 5px solid black;
+    background-color: rgba(154, 154, 154, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-areas:
+        "status   header"
+        "tags     sites"
+        "timeline projects"
+        ".        skills";
+    grid-gap: 20px;
 }
 img{
     display: block;
