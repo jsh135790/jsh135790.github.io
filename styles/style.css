@@ -1,7 +1,7 @@
 html{
     font-size: 20px;
     font-family: "Open Sans";
-    background-image: url('https://img.picui.cn/free/2024/07/13/669232d1273bb.png');
+    background-image: url('../images/bg.png');
     background-size: cover;
 }
 html::before{
@@ -9,7 +9,7 @@ html::before{
     position: absolute;
     width: 100%;
     height: 100%;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(20px);
 }
 p, li{
     font-size: 16px;
@@ -26,23 +26,37 @@ h1{
     text-align: center;
 }
 body{
-    width: 60%;
+    width: 75%;
     margin: 20px auto;
     padding: 0 20px 20px 20px;
     background-color: rgba(154, 154, 154, 0.2);
     backdrop-filter: blur(10px);
     border-radius: 10px;
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 1fr 5fr;
     grid-template-areas:
-        "status   header"
-        "tags     sites"
-        "timeline projects"
-        ".        skills";
+        "avatar header"
+        "status sites"
+        "tags projects"
+        "timeline skills";
     grid-gap: 20px;
 }
 img{
     display: block;
-    margin: 0 auto;
+    margin: 0 0;
     width: 100%;
+}
+.avatar {
+    border-radius: 50%;
+    object-fit: cover;
+    grid-area: avatar;
+}
+.status{
+    grid-area: status;
+    border-radius: 10px;
+    background-color: rgba(92, 92, 92, 0.2);
+    border: 1px solid white;
+}
+.status p{
+    text-align: center;
 }
