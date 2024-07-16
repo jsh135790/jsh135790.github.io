@@ -1,62 +1,292 @@
-html{
-    font-size: 20px;
-    font-family: "Open Sans";
-    background-image: url('../images/bg.png');
-    background-size: cover;
+@font-face {
+    font-family: 'MiSans';
+    src: url('MiSans-Heavy.woff2') format('woff2'),
+        url('MiSans-Heavy.woff') format('woff'),
+        url('MiSans-Heavy.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
 }
-html::before{
-    content: "";
-    position: absolute;
+
+@font-face {
+    font-family: 'MiSans';
+    src: url('MiSans-Normal.woff2') format('woff2'),
+        url('MiSans-Normal.woff') format('woff'),
+        url('MiSans-Normal.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'MiSans';
+    src: url('MiSans-Light.woff2') format('woff2'),
+        url('MiSans-Light.woff') format('woff'),
+        url('MiSans-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+html{
+    --main_bg_color: url(../images/bg.png);
+    --main_text_color: #eeeeee;
+    --gradient: linear-gradient(120deg, #009bfc, #ff68bb 100%);
+    --pink_text_color: #ff74c7;
+    --text_bg_color: #00000040;
+    --item_bg_color: #00000038;
+    --item_hover_color: #33333338;
+    --item_left_title_color: ;
+    --item_left_text_color: ;
+    --footer_text_color: #ffffff;
+    --left_tag_item: rgb(27 42 57 / 20%);
+    --card_filter: 0px;
+    --back_filter: 30px;
+    --back_filter_color: #00000030;
+    --fill: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+    transition: background-color 0.2s ease;
+}
+
+.pilot-filter {
+    position: fixed;
     width: 100%;
     height: 100%;
-    backdrop-filter: blur(20px);
+    background: var(--back_filter_color);
+    backdrop-filter:  blur(var(--back_filter));
+    -webkit-backdrop-filter: blur(var(--back_filter));
+    z-index: -99999999;
 }
-p, li{
-    font-size: 16px;
-    line-height: 2;
-    letter-spacing: 1px;
-    color:pink;
-}
-h1{
-    margin: 0;
-    padding: 20px 0;
-    color: #00539f;
-    text-shadow: 3px 3px 5px black;
-    font-size: 60px;
-    text-align: center;
-}
-body{
-    width: 75%;
-    margin: 20px auto;
-    padding: 0 20px 20px 20px;
-    background-color: rgba(154, 154, 154, 0.2);
-    backdrop-filter: blur(10px);
-    border-radius: 10px;
-    display: grid;
-    grid-template-columns: 1fr 5fr;
-    grid-template-areas:
-        "avatar header"
-        "status sites"
-        "tags projects"
-        "timeline skills";
-    grid-gap: 20px;
-}
-img{
-    display: block;
-    margin: 0 0;
+
+body {
+    display: flex;
+    height: 100%;
+    min-height: 100vh;
     width: 100%;
+    position: relative;
+    font-family: "Misans", sans-serif;
+    background: var(--main_bg_color);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    transition: color 0.1s ease;
+    justify-content: center;
+    color: var(--main_text_color);
 }
+
+.page-main{
+    display: flex;
+    width: 100%;
+    transition: transform 0.5s ease;
+    max-width: 1100px;
+    position: relative;
+    flex-direction: row;
+}
+
+.left-panel {
+    overflow-y: scroll;
+    width: 230px;
+    height: 100vh;
+    display: flex;
+    padding: 0 15px;
+    position: sticky; /* 粘性定位(探究flex嵌套为啥不会乱？) */
+    align-items: center;
+    flex-direction: column;
+}
+
+.left-panel::-webkit-scrollbar {
+    display: none;
+}
+
 .avatar {
+    flex-shrink: 0;
+    width: 90%;
+    position: relative;
+    aspect-ratio: 1/1;
+    margin-top: 50px;
+    background-image: url(../images/avatar.jpg);
+    background-size: cover;
     border-radius: 50%;
-    object-fit: cover;
-    grid-area: avatar;
 }
-.status{
-    grid-area: status;
+
+.left-div {
+    flex-shrink: 0;
+    width: 100%;
+    border-radius: 13px;
+    margin-top: 15px;
+    padding: 20px;
+    backdrop-filter: blur(var(--card_filter));
+    -webkit-backdrop-filter: blur(var(--card_filter));
+    background: var(--item_bg_color);
+}
+
+.status {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.status-item {
+    display: flex;
+    align-items: center;
+    line-height: 20px;
+    font-size: 15px;
+    overflow: hidden;
+}
+
+.status-item:first-child{
+    margin-bottom: 5px;
+}
+
+.status-item svg{
+    width: 16px;
+    height: 16px;
+    fill:var(--fill);
+    font-size: 18px;
+    margin-left: 5px;
+    margin-right: 10px;
+}
+
+.tags {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0 0 0 5px;
+}
+.tags li {
+    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 28px;
+    margin: 0px 5px 5px 0;
+    padding: 8px;
+    font-size: 13px;
     border-radius: 10px;
-    background-color: rgba(92, 92, 92, 0.2);
-    border: 1px solid white;
+    background: var(--left_tag_item);
 }
-.status p{
-    text-align: center;
+
+#line {
+    width: 100%;
+    font-size: 13px;
+    padding-left: 8px;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+}
+
+#line li {
+    list-style: none;
+    position: relative;
+    padding: 15px 0px 0px 15px;
+    border-left: 2px solid #d5d5d5;
+    border-radius: 0;
+    scroll-snap-align: end;
+    color: var(--main_text_color);
+}
+
+#line::-webkit-scrollbar {
+    display: none;
+}
+
+.focus {
+    width: 8px;
+    height: 8px;
+    border-radius: 22px;
+    background-color: rgb(255 255 255);
+    border: 2px solid #fff;
+    position: absolute;
+    left: -5px; /* 绝对定位，向左边移动5px */
+    top: 50%;
+}
+
+#line li:first-child .focus:first-child {
+    background-color: pink;
+    animation: focus 1.8s ease infinite;
+}
+
+.right-panel {
+    width: calc(100% - 230px);
+    display: flex;
+    padding: 20px;
+    position: relative; /* 是否有必要？ */
+    float: right; /* 是否有必要？ */
+    padding-bottom: 50px;
+    flex-direction: column;
+}
+
+.index-avatar {
+    background-image: url(../images/avatar.jpg);
+    flex-shrink: 0;
+    width: 40%;
+    margin-top: 30px;
+    position: relative;
+    max-width: 200px;
+    aspect-ratio: 1/1;
+    background-size: cover;
+    border-radius: 50%;
+    border: 0.5px solid #ffffff;
+}
+
+.pilot {
+    font-size: 55px;
+    font-weight: bold;
+    margin: 30px 0;
+}
+
+.gradient-text {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200%;
+    background-position: 0%;
+    font-family: "title";
+    animation: backgroundSizeAnimation 5s ease-in-out infinite;
+    /* animation-direction: alternate; */
+    background-image: var(--gradient);
+}
+
+@keyframes backgroundSizeAnimation {
+    0% {
+        background-position: 100%;
+    }
+
+    25% {
+        background-position: 50%;
+    }
+
+    50% {
+        background-position: 0%;
+    }
+
+    75% {
+        background-position: 50%;
+    }
+
+    100% {
+        background-position: 100%;
+    }
+
+}
+
+.pure-pink {
+    color: var(--pink_text_color);
+    font-weight: bold;
+}
+
+.text-bg {
+    font-weight: bold;
+    background: var(--text_bg_color);
+    border-radius: 5px;
+    font-size: 14px;
+    margin: 0;
+    padding: 2px 4px;
 }
