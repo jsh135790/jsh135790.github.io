@@ -1,8 +1,8 @@
 @font-face {
     font-family: 'MiSans';
-    src: url('MiSans-Heavy.woff2') format('woff2'),
-        url('MiSans-Heavy.woff') format('woff'),
-        url('MiSans-Heavy.ttf') format('truetype');
+    src: url('../fonts/MiSans-Heavy.woff2') format('woff2'),
+        url('../fonts/MiSans-Heavy.woff') format('woff'),
+        url('../fonts/MiSans-Heavy.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
     font-display: swap;
@@ -10,9 +10,9 @@
 
 @font-face {
     font-family: 'MiSans';
-    src: url('MiSans-Normal.woff2') format('woff2'),
-        url('MiSans-Normal.woff') format('woff'),
-        url('MiSans-Normal.ttf') format('truetype');
+    src: url('../fonts/MiSans-Normal.woff2') format('woff2'),
+        url('../fonts/MiSans-Normal.woff') format('woff'),
+        url('../fonts/MiSans-Normal.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -20,9 +20,9 @@
 
 @font-face {
     font-family: 'MiSans';
-    src: url('MiSans-Light.woff2') format('woff2'),
-        url('MiSans-Light.woff') format('woff'),
-        url('MiSans-Light.ttf') format('truetype');
+    src: url('../fonts/MiSans-Light.woff2') format('woff2'),
+        url('../fonts/MiSans-Light.woff') format('woff'),
+        url('../fonts/MiSans-Light.ttf') format('truetype');
     font-weight: 300;
     font-style: normal;
     font-display: swap;
@@ -52,6 +52,26 @@ html{
     box-sizing: border-box;
     user-select: none;
     transition: background-color 0.2s ease;
+}
+
+/* 设置滚动条样式 */
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #000000;
+    border-radius: 8px;
+    height: 10%;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+    background-color: rgba(255,255,255,.5);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* 设置滚动条拇指在悬停时的背景颜色 */
 }
 
 .pilot-filter {
@@ -329,7 +349,7 @@ a:focus {
     background: var(--item_bg_color);
     align-items: center;
     justify-content: center;
-    transition: width 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+    transition: width 0.5s ease, opacity 0.5s ease, transform 0.5s ease;
     flex-shrink: 0;
 }
 .icon-item:first-child{
@@ -490,7 +510,7 @@ a:focus {
     height: 100px;
     width: calc(25% - 15px);
     backdrop-filter: blur(var(--card_filter));-webkit-backdrop-filter: blur(var(--card_filter));
-    transition: opacity 0.5s ease, background-color 0.2s ease, border 0.2s ease, box-shadow 0.5s cubic-bezier(0, 0.55, 0.45, 1);
+    transition: opacity 0.5s ease, background-color 0.2s ease, border 0.2s ease, box-shadow 0.5s cubic-bezier(0, 0.55, 0.45, 1), transform 0.5s cubic-bezier(0.33, 1, 0.68, 1);
 }
 
 .display-item:hover {
@@ -537,4 +557,44 @@ a:focus {
 
 .pilot-skills #skills-Wap {
     display: none;
+}
+
+@media (max-width: 1050px) {
+    .left-panel {
+        display: none;
+    }
+
+    .display-item {
+        width: calc(50% - 18px);
+        margin: 9px;
+    }
+
+    .right-panel {
+        width: 100%;
+    }
+
+    .profile-snake {
+        width: 100%;
+    }
+
+    /* .profile, .profile span{
+        font-size: 4vw;
+    } */
+
+    /* .pilot {
+        font-size: 10vw;
+        margin: 2vw 0;
+    } */
+
+    .social-icon {
+        margin-top: 4vw;
+    }
+
+    .pilot-skills #skills-Wap {
+        display: block;
+    }
+
+    .pilot-skills #skills-web {
+        display: none;
+    }
 }
