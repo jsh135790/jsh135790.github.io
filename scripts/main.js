@@ -63,10 +63,6 @@ lines.forEach((line, index) => {
     console.log(`%c${line}`, `color: ${gradientColors[index]}; font-family: "Misans", sans-serif;`);
 });
 
-// console.log('%cCopyright @ 2024 by Pilot1337',
-//     `background-color: ${gradientColors[lines.length - 1]}; color: white; font-size: 14px; font-weight: bold; padding: 10px;`
-// );
-
 document.addEventListener('contextmenu', function (event) {
     event.preventDefault();
 });
@@ -164,70 +160,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
     function enableDarkTheme() {
         document.documentElement.setAttribute('data-theme', 'dark');
         // 这里可以添加更多切换到暗主题的代码，例如更改CSS变量或类
-        snk.src = "./svgs/grid-snake-dark.svg";
+        snk.src = "https://raw.githubusercontent.com/jsh135790/jsh135790/output/github-contribution-grid-snake-dark.svg";
     }
 
     function disableDarkTheme() {
         document.documentElement.setAttribute('data-theme', 'light');
         // 这里可以添加更多切换到亮主题的代码，例如更改CSS变量或类
-        snk.src = "./svgs/grid-snake.svg";
+        snk.src = "https://raw.githubusercontent.com/jsh135790/jsh135790/output/github-contribution-grid-snake.svg";
     }
 });
-
-// function setCookie(name, value, days) {
-//     var expires = "";
-//     if (days) {
-//         var date = new Date();
-//         date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-//         expires = "; expires=" + date.toUTCString();
-//     }
-//     document.cookie = name + "=" + value + expires + "; path=/";
-// }
-
-// function getCookie(name) {
-//     var nameEQ = name + "=";
-//     var cookies = document.cookie.split(';');
-//     for (var i = 0; i < cookies.length; i++) {
-//         var cookie = cookies[i];
-//         while (cookie.charAt(0) == ' ') {
-//             cookie = cookie.substring(1, cookie.length);
-//         }
-//         if (cookie.indexOf(nameEQ) == 0) {
-//             return cookie.substring(nameEQ.length, cookie.length);
-//         }
-//     }
-//     return null;
-// }
-
-// document.addEventListener('DOMContentLoaded', function () {
-//     var html = document.querySelector('html');
-//     var themeState = getCookie("themeState") || "Light";
-//     var tanChiShe = document.getElementById("tanChiShe");
-
-//     function changeTheme(theme) {
-//         tanChiShe.src = "./static/svg/snake-" + theme + ".svg";
-//         html.dataset.theme = theme;
-//         setCookie("themeState", theme, 365);
-//         themeState = theme;
-//     }
-
-//     var Checkbox = document.getElementById('myonoffswitch')
-//     Checkbox.addEventListener('change', function () {
-//         if (themeState == "Dark") {
-//             changeTheme("Light");
-//         } else if (themeState == "Light") {
-//             changeTheme("Dark");
-//         } else {
-//             changeTheme("Dark");
-//         }
-//     });
-
-//     if (themeState == "Dark") {
-//         Checkbox.checked = false;
-//     }
-
-//     changeTheme(themeState);
-// });
 
 var on_load = document.querySelector("#html-loading");
 window.addEventListener('load', function() {
@@ -235,47 +176,3 @@ window.addEventListener('load', function() {
         on_load.style.opacity = '0';
     }, 100);
 });
-
-// let myImage = document.querySelector("img");
-
-// document.querySelector("img").addEventListener("click", () => {
-//     let mySrc = myImage.getAttribute("src");
-//     if (mySrc === "images/cisco-png-logo.png") {
-//         myImage.setAttribute("src", "images/cisco2.png");
-//     } else {
-//         myImage.setAttribute("src", "images/cisco-png-logo.png");
-//     }
-// });
-  
-// myImage.onclick = function () {
-//   let mySrc = myImage.getAttribute("src");
-//   if (mySrc === "images/cisco-png-logo.png") {
-//     myImage.setAttribute("src", "images/cisco2.png");
-//   } else {
-//     myImage.setAttribute("src", "images/cisco-png-logo.png");
-//   }
-// };
-
-// document.querySelector("html").addEventListener("click", function () {
-//     alert("别戳我，我怕疼。");
-// });
-// let myButton = document.querySelector("button");
-// let myHeading = document.querySelector("h1");
-// function setUserName() {
-//     let myName = prompt("请输入你的名字。");
-//     if(!myName){
-//         setUserName();
-//     }else{
-//         localStorage.setItem("name", myName);
-//         myHeading.textContent = "Mozilla 酷毙了，" + myName;
-//     }
-// }
-// if (!localStorage.getItem("name")) {
-//     setUserName();
-//   } else {
-//     let storedName = localStorage.getItem("name");
-//     myHeading.textContent = "Mozilla 酷毙了，" + storedName;
-//   }
-// myButton.onclick = function () {
-//     setUserName();
-// };  
