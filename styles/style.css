@@ -38,7 +38,6 @@ html{
     --item_hover_color: #33333338;
     --item_left_title_color: ;
     --item_left_text_color: ;
-    --footer_text_color: #ffffff;
     --left_tag_item: rgb(27 42 57 / 20%);
     --card_filter: 0px;
     --back_filter: 30px;
@@ -57,6 +56,19 @@ html{
 /* 设置滚动条样式 */
 ::-webkit-scrollbar {
     display: none;
+}
+
+[data-theme="dark"] {
+    --main_text_color: #fff;
+    --gradient:linear-gradient(120deg, rgb(133, 62, 255), #f76cc6 100%);
+    --item_bg_color: rgb(19, 20, 24);
+    --item_hover_color: rgb(30, 30, 30);
+    --item_left_title_color: rgb(255, 255, 255);
+    --item_left_text_color: rgb(142, 142, 142);
+    --card_filter: 0px;
+    --back_filter: 0px;
+    --back_filter_color: #000000;
+    --fill:#ffffff;
 }
 
 .pilot-filter {
@@ -84,6 +96,71 @@ body {
     transition: color 0.1s ease;
     justify-content: center;
     color: var(--main_text_color);
+}
+
+#html-loading {
+    background: black;
+    background-size: 100%;
+    background-position: center;
+
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 999999;
+    margin-top: 0px;
+    top: 0px;
+    pointer-events: none;
+    opacity: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#loading-center {
+    height: 200px;
+    width: 200px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle {
+    position: absolute;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    background: #472eff;
+    animation: zoom 1.5s linear infinite;
+    opacity: 0;
+}
+
+.circle:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.circle:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.circle:nth-child(3) {
+    animation-delay: 1s;
+}
+
+@keyframes zoom {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0;
+    }
 }
 
 .page-main{
@@ -176,7 +253,7 @@ body {
     margin: 0px 5px 5px 0;
     padding: 8px;
     font-size: 13px;
-    border-radius: 10px;
+    border-radius: 5px;
     background: var(--left_tag_item);
 }
 
@@ -334,7 +411,7 @@ a:focus {
     background: var(--item_bg_color);
     align-items: center;
     justify-content: center;
-    transition: width 0.5s ease, opacity 0.5s ease, transform 0.5s ease;
+    transition: width 0.5s ease, opacity 0.5s ease, transform 0.5s ease, background-color 0.5s ease;
     flex-shrink: 0;
 }
 .icon-item:first-child{
@@ -374,7 +451,7 @@ a:focus {
     
     align-items: center;
     justify-content: center;
-    transition: width 1s ease, opacity 1s ease, transform 1s ease;
+    transition: width 1s ease, opacity 1s ease, transform 1s ease, background-color 0.5s ease;
     flex-shrink: 0;
 }
 
@@ -495,7 +572,7 @@ a:focus {
     height: 100px;
     width: calc(25% - 15px);
     backdrop-filter: blur(var(--card_filter));-webkit-backdrop-filter: blur(var(--card_filter));
-    transition: opacity 0.5s ease, background-color 0.2s ease, border 0.2s ease, box-shadow 0.5s cubic-bezier(0, 0.55, 0.45, 1), transform 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+    transition: opacity 0.5s ease, background-color 0.3s ease, border 0.2s ease, box-shadow 0.5s cubic-bezier(0, 0.55, 0.45, 1), transform 0.5s cubic-bezier(0.33, 1, 0.68, 1);
 }
 
 .display-item:hover {
@@ -607,7 +684,7 @@ a:focus {
     border-radius: 15px;
 
     display: flex;
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     align-items: center;
     justify-content: center;
     overflow: hidden;

@@ -137,6 +137,43 @@ popup_main[0].addEventListener('click', function (event) {
     event.stopPropagation();
 });
 
+document.addEventListener('DOMContentLoaded', (event) => {
+    const toggleSwitch = document.getElementById('toggle-switch');
+    var snk = document.getElementById("profile-snake");
+
+    // 检查本地存储以查看上次的主题设置
+    if (localStorage.getItem('theme') === 'dark') {
+        toggleSwitch.checked = true;
+        enableDarkTheme();
+    } else {
+        toggleSwitch.checked = false;
+        disableDarkTheme();
+    }
+
+    // 添加事件监听器
+    toggleSwitch.addEventListener('change', function() {
+        if (this.checked) {
+            enableDarkTheme();
+            localStorage.setItem('theme', 'dark');
+        } else {
+            disableDarkTheme();
+            localStorage.setItem('theme', 'light');
+        }
+    });
+
+    function enableDarkTheme() {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        // 这里可以添加更多切换到暗主题的代码，例如更改CSS变量或类
+        snk.src = "./svgs/grid-snake-dark.svg";
+    }
+
+    function disableDarkTheme() {
+        document.documentElement.setAttribute('data-theme', 'light');
+        // 这里可以添加更多切换到亮主题的代码，例如更改CSS变量或类
+        snk.src = "./svgs/grid-snake.svg";
+    }
+});
+
 // function setCookie(name, value, days) {
 //     var expires = "";
 //     if (days) {
@@ -192,12 +229,12 @@ popup_main[0].addEventListener('click', function (event) {
 //     changeTheme(themeState);
 // });
 
-// var pageLoading = document.querySelector("#zyyo-loading");
-// window.addEventListener('load', function() {
-//     setTimeout(function () {
-//         pageLoading.style.opacity = '0';
-//     }, 100);
-// });
+var on_load = document.querySelector("#html-loading");
+window.addEventListener('load', function() {
+    setTimeout(function () {
+        on_load.style.opacity = '0';
+    }, 100);
+});
 
 // let myImage = document.querySelector("img");
 
