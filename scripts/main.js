@@ -42,8 +42,8 @@ var title_heading = '👀 Pilot1337 ';
 var title_sub = '关于本页的说明';
 var offiUrl = 'https://nightmare.plus';
 var content = `
-当前版本: Release - 1.0.0
-更新日期: 2024-7-19
+当前版本: Release - 1.1.0
+更新日期: 2024-7-21
 版权声明：
 1. 本主页基于现代布局进行设计编写 仅使用原生HTML CSS JS.
 2. 本主页完全开源 欢迎你进行任何的修改以及更新 但是我不建议你:
@@ -176,3 +176,102 @@ window.addEventListener('load', function() {
         on_load.style.opacity = '0';
     }, 100);
 });
+
+const audio = document.getElementById('audio');
+const playBtn = document.getElementById('play');
+const prevBtn = document.getElementById('prev');
+const nextBtn = document.getElementById('next');
+const progressContainer = document.getElementById('progress-container');
+const progress = document.getElementById('progress');
+const title = document.getElementById('title');
+const artist = document.getElementById('artist');
+const cover = document.getElementById('cover');
+
+const songs = [
+    {
+        title: "Midnight Moonlie",
+        artist: "Pilot1337",
+        src: "./audios/song1.wav",
+        cover: "./images/covers/cover1.jpg"
+    },
+    {
+        title: "天気 / Sunny day",
+        artist: "Pilot1337",
+        src: "./audios/song2.wav",
+        cover: "./images/covers/cover2.jpg"
+    },
+    {
+        title: "Demo 3",
+        artist: "Pilot1337",
+        src: "./audios/song3.wav",
+        cover: "./images/covers/cover3.jpg"
+    }
+];
+
+let songIndex = 0;
+
+function loadSong(song) {
+    title.textContent = song.title;
+    artist.textContent = song.artist;
+    audio.src = song.src;
+    cover.src = song.cover;
+}
+
+function playSong() {
+    audio.play();
+    playBtn.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+          <path d="M48 64C21.5 64 0 85.5 0 112L0 400c0 26.5 21.5 48 48 48l32 0c26.5 0 48-21.5 48-48l0-288c0-26.5-21.5-48-48-48L48 64zm192 0c-26.5 0-48 21.5-48 48l0 288c0 26.5 21.5 48 48 48l32 0c26.5 0 48-21.5 48-48l0-288c0-26.5-21.5-48-48-48l-32 0z"/>
+        </svg>`;
+}
+
+function pauseSong() {
+    audio.pause();
+    playBtn.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+          <path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80L0 432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/>
+        </svg>`;
+}
+
+function prevSong() {
+    songIndex = (songIndex - 1 + songs.length) % songs.length;
+    loadSong(songs[songIndex]);
+    playSong();
+}
+
+function nextSong() {
+    songIndex = (songIndex + 1) % songs.length;
+    loadSong(songs[songIndex]);
+    playSong();
+}
+
+function updateProgress() {
+    const progressPercent = (audio.currentTime / audio.duration) * 100;
+    progress.style.width = `${progressPercent}%`;
+}
+
+function setProgress(e) {
+    const width = this.clientWidth;
+    const clickX = e.offsetX;
+    const duration = audio.duration;
+
+    audio.currentTime = (clickX / width) * duration;
+}
+
+playBtn.addEventListener('click', () => {
+    const isPlaying = audio.paused;
+
+    if (isPlaying) {
+        playSong();
+    } else {
+        pauseSong();
+    }
+});
+
+prevBtn.addEventListener('click', prevSong);
+nextBtn.addEventListener('click', nextSong);
+audio.addEventListener('timeupdate', updateProgress);
+progressContainer.addEventListener('click', setProgress);
+
+// 初始加载歌曲
+loadSong(songs[songIndex]);
