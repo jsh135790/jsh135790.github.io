@@ -308,7 +308,6 @@ body {
     align-items: center;
     font-size: 16px;
     font-weight: normal;
-    margin-bottom: 15px;
 }
 
 .music-heading svg{
@@ -323,12 +322,19 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 15px;
 }
 
-#cover-container img{
+#cover {
     width: 80%;
-    aspect-ratio: 1 / 1;
+    height: 100%;
     border-radius: 10%;
+    transition: height 0.5s cubic-bezier(0.76, 0, 0.24, 1), width 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+#cover.expanded {
+    width: 0;
+    height: 0;
 }
 
 #info {
@@ -436,19 +442,6 @@ body {
     flex-direction: column;
 }
 
-.index-avatar {
-    background-image: url(../images/avatar.jpg);
-    flex-shrink: 0;
-    width: 40%;
-    margin-top: 30px;
-    position: relative;
-    max-width: 200px;
-    aspect-ratio: 1/1;
-    background-size: cover;
-    border-radius: 50%;
-    border: 0.5px solid #ffffff;
-}
-
 .pilot {
     font-size: 55px;
     font-weight: bold;
@@ -461,7 +454,6 @@ body {
     -webkit-text-fill-color: transparent;
     background-size: 150%;
     background-position: 0%;
-    font-family: "title";
     animation: backgroundSizeAnimation 5s ease-in-out infinite;
     /* animation-direction: alternate; */
     background-image: var(--gradient);
@@ -790,6 +782,62 @@ a:focus {
     .pilot-skills #skills-web {
         display: none;
     }
+}
+
+/* styles.css */
+#popup-queue {
+    position: fixed;
+    right: 10px;
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.popup {
+    background-color: var(--item_bg_color);
+    backdrop-filter: blur(var(--card_filter));
+    -webkit-backdrop-filter: blur(var(--card_filter));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: 20px;
+    margin-top: 10px;
+    border-radius: 10px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(-200px);
+    transition: all 0.5s ease-in-out, opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    pointer-events: auto;
+    width: 100%;
+    height: 50px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.popup.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.popup.hide {
+    opacity: 0;
+    transform: translateY(-200px) scale(0);
+    height: 0;
+    margin-top: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.popup svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+    margin-right: 10px;
+    vertical-align: middle;
 }
 
 .popup-container {
