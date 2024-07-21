@@ -1,3 +1,12 @@
+/*
+@author: Pilot1337
+@github: https://github.com/jsh135790
+@website: https://nightmare.plus
+This page was published on Github Page.
+This author watermark is not allowed to be removed.
+这个页面部署于Github Page，这个作者水印不允许被移除。
+*/
+
 @font-face {
     font-family: 'MiSans';
     src: url('../fonts/MiSans-Heavy.woff2') format('woff2'),
@@ -744,51 +753,11 @@ a:focus {
     display: none;
 }
 
-@media (max-width: 1050px) {
-    .left-panel {
-        display: none;
-    }
-
-    .display-item {
-        width: calc(50% - 18px);
-        margin: 9px;
-    }
-
-    .right-panel {
-        width: 100%;
-    }
-
-    .profile-snake {
-        width: 100%;
-    }
-
-    /* .profile, .profile span{
-        font-size: 4vw;
-    } */
-
-    /* .pilot {
-        font-size: 10vw;
-        margin: 2vw 0;
-    } */
-
-    .social-icon {
-        margin-top: 4vw;
-    }
-
-    .pilot-skills #skills-Wap {
-        display: block;
-    }
-
-    .pilot-skills #skills-web {
-        display: none;
-    }
-}
-
 /* styles.css */
 #popup-queue {
     position: fixed;
     right: 10px;
-    width: 280px;
+    width: 270px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -881,4 +850,48 @@ a:focus {
 
 .popup-main.active {
     transform: translateY(0) scale(1);
+}
+
+@media (max-width: 1050px) {
+    .left-panel {
+        display: none;
+    }
+
+    .display-item {
+        width: calc(50% - 18px);
+        margin: 9px;
+    }
+
+    .right-panel {
+        width: 100%;
+    }
+
+    .profile-snake {
+        width: 100%;
+    }
+
+    /* .profile, .profile span{
+        font-size: 4vw;
+    } */
+
+    /* .pilot {
+        font-size: 10vw;
+        margin: 2vw 0;
+    } */
+
+    .social-icon {
+        margin-top: 4vw;
+    }
+
+    .pilot-skills #skills-Wap {
+        display: block;
+    }
+
+    .pilot-skills #skills-web {
+        display: none;
+    }
+
+    #popup-queue {
+        display: none;
+    }
 }
