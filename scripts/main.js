@@ -42,7 +42,7 @@ var title_heading = '👀 Pilot1337 ';
 var title_sub = '关于本页的说明';
 var offiUrl = 'https://nightmare.plus';
 var content = `
-当前版本: Release - 1.2.0
+当前版本: Release - 1.3.0
 更新日期: 2024-7-22
 版权声明：
 1. 本主页基于现代布局进行设计编写 仅使用原生HTML CSS JS.
